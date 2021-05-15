@@ -8,6 +8,7 @@
 
 body {
   font-family: "Ubuntu-Light";
+  background-color: #ffe4c4;
 }
 
 .container {
@@ -196,4 +197,29 @@ a {
 
 .footer {
      background-color: hsl(237, 17%, 21%);
+     display: flex;
+     color: #FFF;
+     justify-content: center;
+     align-items: center;
+     border-top-right-radius: 80px;
+}
+
+.footer div {
+    margin: 50px;
+    margin-bottom: 7%;
+    width: 500px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.footer h3 {
+    margin-bottom: 25px;
 }
