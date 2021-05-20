@@ -46,3 +46,34 @@ a {
   color: #242d52;
   font-weight: 700;
 }
+
+.paragraph {
+  line-height: 1.8rem;
+  color: #9095a7;
+}
+
+.hero {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.hero > * {
+  width: 50%;
+}
+.hero .hero__title h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #242d52;
+  padding-right: 12rem;
+  margin-bottom: 2rem;
+}
+.hero .hero__title p {
+  margin-bottom: 2rem;
+  padding-right: 50%;
+}
+.hero .hero__figure img {
+  max-width: 100%;
+}
