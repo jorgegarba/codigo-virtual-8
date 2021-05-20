@@ -21,6 +21,7 @@ a {
 .button {
   border-radius: 15px;
   padding: 8px 12px;
+  display: inline-block;
 }
 .button-primary {
   background-color: #f25f3a;
@@ -32,6 +33,7 @@ a {
 }
 
 .header {
+  padding: 0 1.5rem;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -52,6 +54,10 @@ a {
   color: #9095a7;
 }
 
+.main {
+  padding-top: 6rem;
+}
+
 .hero {
   display: flex;
   justify-content: flex-start;
@@ -59,15 +65,19 @@ a {
   flex-wrap: wrap;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 .hero > * {
   width: 50%;
+}
+.hero .hero__title {
+  margin-bottom: 2rem;
 }
 .hero .hero__title h1 {
   font-size: 3rem;
   font-weight: 700;
   color: #242d52;
-  padding-right: 12rem;
+  padding-right: 35%;
   margin-bottom: 2rem;
 }
 .hero .hero__title p {
@@ -76,4 +86,62 @@ a {
 }
 .hero .hero__figure img {
   max-width: 100%;
+}
+.hero .hero__description h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #242d52;
+  margin-bottom: 2rem;
+  padding-right: 20rem;
+}
+.hero .hero__description p {
+  padding-right: 40%;
+}
+.hero .hero__features .feature {
+  margin-bottom: 1.5rem;
+}
+.hero .hero__features .feature .feature__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.hero .hero__features .feature .feature__header .feature__number {
+  height: 40px;
+  width: 60px;
+  border: none;
+  background-color: #f25f3a;
+  color: #f2f2f2;
+  font-weight: 700;
+  border-radius: 25px;
+  margin-right: 1.5rem;
+}
+.hero .hero__features .feature .feature__header .feature__title {
+  color: #242d52;
+  font-weight: 700;
+}
+.hero .hero__features .feature .feature__description {
+  padding-left: calc(60px + 1.5rem);
+}
+
+@media screen and (max-width: 1200px) {
+  .main .hero .hero__title h1 {
+    padding-right: 15%;
+  }
+  .main .hero .hero__title p {
+    padding-right: 30%;
+  }
+  .main .hero .hero__description h2 {
+    padding-right: 10rem;
+  }
+  .main .hero .hero__description p {
+    padding-right: 25%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main .hero .hero__title h1, .main .hero .hero__title p {
+    padding-right: 10%;
+  }
+  .main .hero .hero__description h2, .main .hero .hero__description p {
+    padding-right: 10%;
+  }
 }

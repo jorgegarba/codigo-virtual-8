@@ -22,6 +22,8 @@ a {
 .button {
 	border-radius: 15px;
 	padding: 8px 12px;
+	display: inline-block;
+
 	&-primary {
 		background-color: $color-naranja;
 		color: $color-blanco;
@@ -33,6 +35,7 @@ a {
 }
 
 .header {
+	padding: 0 1.5rem;
 	max-width: $max-width;
 	margin: 0 auto;
 	display: flex;
@@ -54,23 +57,28 @@ a {
 	line-height: 1.8rem;
 	color: $color-gray-blue;
 }
+.main {
+	padding-top: 6rem;
+}
 
 .hero {
 	@include flex-row();
 	flex-wrap: wrap;
 	max-width: $max-width;
 	margin: 0 auto;
+	padding: 0 1.5rem;
 	> * {
 		width: 50%;
 	}
 	.hero__title {
+		margin-bottom: 2rem;
 		h1 {
 			font: {
 				size: 3rem;
 				weight: 700;
 			}
 			color: $color-dark-blue;
-			padding-right: 12rem;
+			padding-right: 35%;
 			margin-bottom: 2rem;
 		}
 		p {
@@ -81,6 +89,88 @@ a {
 	.hero__figure {
 		img {
 			max-width: 100%;
+		}
+	}
+	.hero__description {
+		h2 {
+			font: {
+				size: 2rem;
+				weight: 700;
+			}
+			color: $color-dark-blue;
+			margin-bottom: 2rem;
+			padding-right: 20rem;
+		}
+		p {
+			padding-right: 40%;
+		}
+	}
+	.hero__features {
+		.feature {
+			margin-bottom: 1.5rem;
+			.feature__header {
+				@include flex-row(flex-start, center);
+				.feature__number {
+					height: 40px;
+					width: 60px;
+					border: none;
+					background-color: $color-naranja;
+					color: $color-blanco;
+					font-weight: 700;
+					border-radius: 25px;
+					margin-right: 1.5rem;
+				}
+				.feature__title {
+					color: $color-dark-blue;
+					font-weight: 700;
+				}
+			}
+			.feature__description {
+				padding-left: calc(60px + 1.5rem);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.main {
+		.hero {
+			.hero__title {
+				h1 {
+					padding-right: 15%;
+				}
+				p {
+					padding-right: 30%;
+				}
+			}
+			.hero__description {
+				h2 {
+					padding-right: 10rem;
+				}
+				p {
+					padding-right: 25%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+	.main {
+		.hero {
+			.hero__title {
+				h1,p {
+					padding-right: 10%;
+				}
+			}
+			.hero__description {
+				h2,p{
+					padding-right:10%
+				}
+			}
 		}
 	}
 }
