@@ -48,6 +48,9 @@ a {
   color: #242d52;
   font-weight: 700;
 }
+.header .header__menu {
+  display: none;
+}
 
 .paragraph {
   line-height: 1.8rem;
@@ -83,6 +86,11 @@ a {
 .hero .hero__title p {
   margin-bottom: 2rem;
   padding-right: 50%;
+}
+.hero .hero__figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hero .hero__figure img {
   max-width: 100%;
@@ -138,10 +146,49 @@ a {
   }
 }
 @media screen and (max-width: 768px) {
-  .main .hero .hero__title h1, .main .hero .hero__title p {
+  .header {
+    flex-wrap: wrap;
+  }
+  .header .header__menu {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #242d52;
+  }
+  .header .header__navigation {
+    transition: top 0.3s ease-in-out;
+    position: absolute;
+    top: -300px;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 10px 25px #888;
+  }
+  .header .header__navigation .header__links {
+    flex-direction: column;
+    gap: 0;
+  }
+  .header .header__navigation .header__links .header__link {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header > a {
+    display: none;
+  }
+
+  .header.open .header__navigation {
+    top: 110px;
+  }
+
+  .main .hero .hero__title h1,
+.main .hero .hero__title p {
     padding-right: 10%;
   }
-  .main .hero .hero__description h2, .main .hero .hero__description p {
+  .main .hero .hero__description h2,
+.main .hero .hero__description p {
     padding-right: 10%;
   }
 }
