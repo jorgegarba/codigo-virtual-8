@@ -136,6 +136,52 @@ a {
   padding-left: calc(60px + 1.5rem);
 }
 
+.comments .comments__title {
+  text-align: center;
+  color: #242d52;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.comments .comments__wrapper {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 6rem;
+}
+.comments .comments__wrapper .comment {
+  background-color: #fafafa;
+  text-align: center;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+.comments .comments__wrapper .comment .comment__figure {
+  height: 80px;
+  width: 80px;
+  margin: 0 auto;
+  transform: translate(0, -50%);
+}
+.comments .comments__wrapper .comment .comment__figure img {
+  max-width: 100%;
+}
+.comments .comments__wrapper .comment .comment__name {
+  margin-bottom: 1rem;
+  color: #242d52;
+  font-weight: 700;
+}
+.comments .comments__action {
+  text-align: center;
+}
+
+.slogan {
+  height: 200px;
+  background-color: #f25f3a;
+}
+.slogan .slogan__message {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 1200px) {
   .main .hero .hero__title h1 {
     padding-right: 15%;
@@ -195,6 +241,15 @@ a {
   .main .hero .hero__description h2,
 .main .hero .hero__description p {
     padding-right: 10%;
+  }
+  .main .comments .comments__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .main .comments .comments__wrapper .comment {
+    margin-bottom: 2rem;
   }
 }
 @media screen and (max-width: 480px) {
