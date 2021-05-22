@@ -8,6 +8,9 @@
 body {
   font-family: "Be Vietnam", sans-serif;
   padding-top: 60px;
+  background-image: url(../images/bg-tablet-pattern.svg), url(../images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: calc(100% + 200px) -200px, -400px 800px;
 }
 
 ul {
@@ -299,13 +302,22 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .header .header__navigation .header__links .header__link:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
   }
   .header > a {
     display: none;
   }
 
-  .header.open .header__navigation {
+  body.open .header__navigation {
+    z-index: 1000;
     top: 110px;
+  }
+  body.open .main {
+    filter: blur(4px);
   }
 
   .main .hero .hero__title h1,

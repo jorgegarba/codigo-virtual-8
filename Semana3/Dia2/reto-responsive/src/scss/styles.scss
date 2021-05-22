@@ -10,6 +10,10 @@
 body {
 	font-family: $font-vietnam;
 	padding-top: 60px;
+	background-image: url(../images/bg-tablet-pattern.svg),
+		url(../images/bg-tablet-pattern.svg);
+	background-repeat: no-repeat, no-repeat;
+	background-position: calc(100% + 200px) -200px, -400px 800px;
 }
 ul {
 	list-style: none;
@@ -310,6 +314,12 @@ a {
 				.header__link {
 					height: 50px;
 					@include flex-row(center, center);
+
+					transition: background-color 0.2s ease-in-out;
+					&:hover {
+						background-color: darken($color: #fff, $amount: 8%);
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -319,9 +329,13 @@ a {
 		}
 	}
 
-	.header.open {
+	body.open {
 		.header__navigation {
+			z-index: 1000;
 			top: 110px;
+		}
+		.main {
+			filter: blur(4px);
 		}
 	}
 

@@ -9,14 +9,15 @@
     integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="src/css/styles.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Document</title>
 </head>
 
-<body>
-  <header class="header" id="header">
+<body id="body">
+  <header class="header">
     <figure class="header__logo">
       <img src="src/images/logo.svg" alt="logo app">
     </figure>
@@ -90,7 +91,7 @@
     <section class="comments">
       <h2 class="comments__title">What they've said</h2>
       <div class="comments__wrapper">
-        <div class="comment">
+        <div class="comment" data-aos="fade-up" data-aos-duration="1000">
           <figure class="comment__figure">
             <img src="src/images/avatar-ali.png" alt="">
           </figure>
@@ -100,7 +101,7 @@
             visibility on larger milestones at all times keeps everyone motivated.”
           </p>
         </div>
-        <div class="comment">
+        <div class="comment" data-aos="fade-up" data-aos-duration="2000">
           <figure class="comment__figure">
             <img src="src/images/avatar-ali.png" alt="">
           </figure>
@@ -110,7 +111,7 @@
             visibility on larger milestones at all times keeps everyone motivated.”
           </p>
         </div>
-        <div class="comment">
+        <div class="comment" data-aos="fade-up" data-aos-duration="3000">
           <figure class="comment__figure">
             <img src="src/images/avatar-ali.png" alt="">
           </figure>
@@ -169,6 +170,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script src="src/js/index.js"></script>
 </body>
