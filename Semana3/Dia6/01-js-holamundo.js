@@ -27,7 +27,7 @@ let papeletas = false;
 console.log("Soltero?: " + soltero);
 
 // TIPO DE DATO ARRAY
-let meses = ["January", "February", "March", "April"];
+let meses = ["15.5", "February", "March", "April"];
 
 console.log(meses);
 
@@ -44,7 +44,7 @@ let modulo = 55 % 6;
 console.log("55 % 6 = " + modulo);
 
 // Operaciones simplificadas
-let likes = 2
+let likes = 2;
 // incrementar automáticamente en una unidad a la variable likes
 likes++;
 console.log(likes);

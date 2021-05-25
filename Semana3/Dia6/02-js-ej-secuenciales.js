@@ -3,6 +3,7 @@
  * e imprimir el promedio de los 4
  */
 let c1 = 0, c2 = 0, c3 = 0, c4 = 0, promedio = 0, suma = 0;
+
 /**
  * typeof [variable] => devuelve un string con el tipo de dato 
  * de un elemento
@@ -28,4 +29,3 @@ promedio = suma / 4;
  */
 console.log("El promedio es:" + promedio);
 console.log(`El promedio es: ${promedio}`);
-
