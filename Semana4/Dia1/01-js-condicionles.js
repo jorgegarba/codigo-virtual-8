@@ -98,16 +98,38 @@
 /**
  * Ejercicio 3.6 pág. 61
  */
-let platos = 250;
-let total = 0;
-if (platos < 200) {
-  total = platos * 95;
-} else {
-  if (platos <= 300) {
-    total = platos * 85;
-  } else {
-    total = platos * 75;
-  }
-}
+// let platos = 250;
+// let total = 0;
+// if (platos < 200) {
+//   total = platos * 95;
+// } else {
+//   if (platos <= 300) {
+//     total = platos * 85;
+//   } else {
+//     total = platos * 75;
+//   }
+// }
 
-document.write(`Cantidad de plato: ${platos} <br> Total a pagar: ${total}`)
+// document.write(`Cantidad de plato: ${platos} <br> Total a pagar: ${total}`)
+
+/**
+ * Ejercicio 3.4 Pág. 89
+ */
+
+// let horas = 6;
+// let total = 0;
+// if (horas <= 2) {
+//   total = horas * 5;
+// } else {
+//   if (horas <= 5) {
+//     total = (2 * 5) + (horas - 2) * 4;
+//   } else {
+//     if (horas <= 10) {
+//       total = (2 * 5) + (3 * 4) + (horas - 5) * 3;
+//     }
+//     else {
+//       total = (2 * 5) + (3 * 4) + (5 * 3) + (horas - 10) * 2;
+//     }
+//   }
+// }
+// document.write(`Horas en el estacionamiento: ${horas} <br> Total a pagar: S/ ${total}`)
