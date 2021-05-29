@@ -25,12 +25,6 @@ buscarPorDNI("78451245", function (nombre) {
 
 
 
-
-
-
-
-
-
 /********************************** */
 
 let saludar = function () {
@@ -59,13 +53,6 @@ const getNombres = (callback) => {
 };
 
 
-
-
-
 getNombres(function (usuarios) {
   console.log(usuarios);
 });
-
-
-
-
