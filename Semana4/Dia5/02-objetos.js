@@ -47,6 +47,23 @@ console.log(objTrabajador);
 
 
 let ajiGallina = {
+  imprimirIngredientes: function () {
+    console.log("-----Listando los ingredientes-----");
+    for (let i = 0; i < ajiGallina.ingredientes.length; i++) {
+      console.log(`${ajiGallina.ingredientes[i].cant} ${ajiGallina.ingredientes[i].um} de ${ajiGallina.ingredientes[i].nombre}`);
+    }
+  },
+  agregarIngrediente: function (unidadMedida, cantidad, nombre) {
+    //
+    // Realizar el agoritmo para poder ejecutar la función
+    // agregarIngrediente y agregar un nuevo ingrediente
+    let objetoIngrediente = {
+      nombre: nombre,
+      um: unidadMedida,
+      cant: cantidad
+    }
+    ajiGallina.ingredientes.push(objetoIngrediente)
+  },
   nombre: "Ají de gallina",
   precio: 12.00,
   ingredientes: [{
@@ -59,12 +76,8 @@ let ajiGallina = {
     cant: 200
   }]
 }
-console.log(ajiGallina);
 
-console.log("Listando los ingredientes");
-
-for (let i = 0; i < ajiGallina.ingredientes.length; i++) {
-
-  console.log(`${ajiGallina.ingredientes[i].cant} ${ajiGallina.ingredientes[i].um} de ${ajiGallina.ingredientes[i].nombre}`);
-
-}
+ajiGallina.imprimirIngredientes();
+ajiGallina.agregarIngrediente("unidades", 7, "aceituna");
+ajiGallina.agregarIngrediente("unidades", 5, "huevos");
+ajiGallina.imprimirIngredientes();
