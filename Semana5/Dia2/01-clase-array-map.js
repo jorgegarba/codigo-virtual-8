@@ -1,15 +1,13 @@
 /**
- *  arreglo.forEach((elemento,indice?,arreglo?)=>{})
- *
- * método que recorre todos los elementos de un arreglo.
+ * arreglo.map((elemento,indice?,arreglo?)=>{})
+ * Método que recorre todos los elementos de un arreglo
  * - Por cada ítem, se ejecuta un callback que debemos
- * pasar a la función forEach
- * - El callback puede recibir hasta 3 parámetros:
- * 1. el elemento de la iteración actual
- * 2. el índice o posición de la iteración actual - opcional
- * 3. una copia del arreglo original - opcional
- * - forEach no retorna valores
- *
+ * pasar a la función map
+ * - Por cada elemento del arreglo, el método map retorna
+ * un nuevo elemento (obligatorio)
+ * - Lo que quiere decir que el método map, retornará
+ * un arreglo con la misma cantidad de elementos del arreglo
+ * original (pero no los mismos elementos necesariamente)
  */
 
 let users = [
@@ -57,28 +55,12 @@ let users = [
 	}
 ];
 
-let gmails = [];
-users.forEach((usuario, i) => {
-	console.log(`${i} - ${usuario.first_name} ${usuario.last_name}`);
+let resultado = users.map((usuario, i) => {
 	if (usuario.email.indexOf('gmail') >= 0) {
-		gmails.push(usuario);
+		return usuario.email;
+	} else {
+		return "sin gmail"
 	}
 });
-console.log(gmails);
 
-/**
- * Formas de analizar expresiones regulares
- */
-let gmailRegex = new RegExp('gmail');
-let rptaRegex = gmailRegex.test('jorge@gmail.com');
-if (rptaRegex === true) {
-	console.log('Sí es gmail');
-} else {
-	console.log('No es gmail');
-}
-
-if (/gmail/.test('jorge@smail.com')) {
-	console.log('Sí es gmail');
-} else {
-	console.log('No es gmail');
-}
+console.log(resultado);
