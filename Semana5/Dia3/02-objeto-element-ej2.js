@@ -48,16 +48,36 @@ let users = [
 		age: 36
 	}
 ];
+let enlaces = [
+	{ id: 1, texto: 'Home', path: '/home' },
+	{ id: 2, texto: 'Portafolio', path: '/portafolio' },
+	{ id: 3, texto: 'Nosotros', path: '/nosotros' },
+	{ id: 4, texto: 'Contacto', path: '/contacto' }
+];
 
-let cuerpoTabla = document.getElementById("cuerpo-tabla");
+let cuerpoTabla = document.getElementById('cuerpo-tabla');
+let navegacion = document.getElementById('navegacion');
 
-const fillTable = ()=>{
-
-  /**
-   * LLenar la tabla con los datos de los usuarios
-   * Procurar incluir una etiqueta <img>
-   * colocando la imagen del usuario
-   */
-
-}
+const fillTable = () => {
+	let filas = '';
+	users.forEach((usuario, i) => {
+		filas += `<tr>
+								<td>${i + 1}</td>
+								<td>${usuario.id}</td>
+								<td>${usuario.first_name} ${usuario.last_name}</td>
+								<td><img src="${usuario.avatar}" alt="user photo"/></td>
+								<td>${usuario.age} <button>Eliminar</button> </td>
+							</tr>`;
+		cuerpoTabla.innerHTML = filas;
+	});
+};
 fillTable();
+
+const fillLinks = () => {
+	let linksString = '';
+	enlaces.forEach((enlace) => {
+		linksString += `<li><a href="${enlace.path}">${enlace.texto}</a></li>`;
+	});
+	navegacion.innerHTML = linksString;
+};
+fillLinks();
