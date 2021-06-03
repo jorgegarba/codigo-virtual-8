@@ -103,8 +103,15 @@ const listaUsuarios = document.querySelector('#lista-usuarios');
  * 3. agregar el <li> al <ul>
  */
 
+// listaUsuarios.innerHTML = `<li>item 1</li><li>item 2</li>`;
+
+let lisString = '';
+
 users.forEach((usuario) => {
-	let liTemporal = document.createElement('li');
-	liTemporal.innerText = `${usuario.first_name} ${usuario.last_name}`;
-	listaUsuarios.append(liTemporal);
+	// let liTemporal = document.createElement('li');
+	// liTemporal.innerText = `${usuario.first_name} ${usuario.last_name}`;
+	// listaUsuarios.append(liTemporal);
+	lisString = lisString + `<li>${usuario.first_name} ${usuario.last_name}</li>`;
 });
+
+listaUsuarios.innerHTML = lisString;
