@@ -14,7 +14,7 @@ let imagen = document.getElementById('imagen');
 /**
  * HINT: usar una variable global que incie con el valor 0
  */
-let n = 0;
+// let n = 0;
 
 /**
  * - Al darle click al botón anterior,
@@ -25,5 +25,28 @@ let n = 0;
  * - Al darle click al botón siguiente
  * comportamiento análogo al del btnAnterior
  */
-btnAnterior.onclick = () => {};
-btnSiguiente.onclick = () => {};
+// btnAnterior.onclick = () => {};
+// btnSiguiente.onclick = () => {};
+
+let n = 0;
+
+btnAnterior.onclick = () => {
+	//si la variable inicial está en 0, el boton anterior debe estar bloqueado
+	n--;
+	imagen.setAttribute('src', `${imagenes[n]}`);
+
+	btnSiguiente.removeAttribute('disabled');
+	if (n === 0) {
+		btnAnterior.setAttribute('disabled', true);
+	}
+};
+
+btnSiguiente.onclick = () => {
+	n++;
+	imagen.setAttribute('src', `${imagenes[n]}`);
+
+	btnAnterior.removeAttribute('disabled');
+	if (n === imagenes.length - 1) {
+		btnSiguiente.setAttribute('disabled', true);
+	}
+};
