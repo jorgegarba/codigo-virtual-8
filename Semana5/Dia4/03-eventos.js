@@ -2,6 +2,9 @@ let linkGoogle = document.getElementById('linkGoogle');
 let divCuadrado = document.getElementById('divCuadrado');
 let selectPais = document.getElementById('selectPais');
 let selectDpto = document.getElementById('selectDpto');
+let inputNombre = document.getElementById('inputNombre');
+let inputMensaje = document.getElementById('inputMensaje');
+let letras = document.getElementById('letras');
 
 let paises = [
 	{ id: 12343, nombre: 'Perú' },
@@ -72,4 +75,25 @@ selectPais.onchange = (e) => {
 			selectDpto.append(option);
 		}
 	});
+};
+
+inputNombre.onkeyup = (e) => {
+	console.log(inputNombre.value);
+};
+
+inputMensaje.onkeyup = () => {
+	let texto = inputMensaje.value;
+	let caracteres = texto.length;
+	if (caracteres > 50) {
+		inputMensaje.value = inputMensaje.value.substr(0, 49);
+	} else {
+		letras.innerText = 50 - caracteres;
+	}
+
+	/**
+	 * Cada vez que se escriba un nuevo caracter en el textarea
+	 * deberá de restarse de la cuenta máxima de 50 caracteres.
+	 * Cuando la cantidad total llegue a 50 caracteres, no deberán escribirse
+	 * más caracteres
+	 */
 };
