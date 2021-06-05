@@ -46,6 +46,7 @@ const setTableData = () => {
     // Boton
     const btnEliminar = document.createElement("button");
     btnEliminar.innerText = "Eliminar";
+    btnEliminar.setAttribute("class", "btn btn-danger");
 
     btnEliminar.onclick = () => elimiarProducto(posicion);
 
