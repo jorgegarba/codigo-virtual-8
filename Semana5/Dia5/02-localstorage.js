@@ -27,6 +27,9 @@ formulario.onsubmit = (e) => {
     arrayProductos.push(objetoProducto);
     // Quiero guardar este datos en mi localStorage
     // La forma para guardar un objeto en localStorage es usando JSON.stringify(objeto)
+    // Esto se debe a que localStorage sòlo acepta elementos de tipo STRING
+    // JSON.stringify(objeto_json), convierte a string un json dado como paratmetro
+   
     localStorage.setItem("productos", JSON.stringify(arrayProductos));
 
     setTableData();
