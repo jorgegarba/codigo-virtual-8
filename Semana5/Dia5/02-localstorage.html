@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage - 2</title>
+</head>
+<style>
+    body {
+        margin: 20px;
+        font-family: Arial, Helvetica, sans-serif
+    }
+</style>
+
+<body>
+    <div>
+        <h1>Lista de Productos</h1>
+        <form action="" id="formulario">
+            <div>
+                <label for="inputProducto">Ingrese el nombre del producto</label>
+                <input id="inputProducto" type="text" name="producto" placeholder="Ejm: Arroz">
+            </div>
+            <div>
+                <label for="">Ingrese el precio del producto</label>
+                <input id="inputPrecio" type="text" name="precio" placeholder="Ejm: 10">
+            </div>
+            <div>
+                <button type="submit">Guardar Producto</button>
+            </div>
+        </form>
+        <br>
+        <table border="1" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- <tr>
+                    <td>Papa</td>
+                    <td>S/ 10</td>
+                    <td><button>Eliminar</button></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./02-localstorage.js"></script>
+
+</html>
