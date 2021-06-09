@@ -34,7 +34,7 @@ export let peliculas = [
 		vote_count: 827
 	},
 	{
-		adult: false,
+		adult: true,
 		backdrop_path: '/77tui163estZrQ78NBggqDB4n2C.jpg',
 		genre_ids: [28, 80],
 		id: 637649,
@@ -85,7 +85,7 @@ export let peliculas = [
 		vote_count: 2919
 	},
 	{
-		adult: false,
+		adult: true,
 		backdrop_path: '/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg',
 		genre_ids: [28, 12, 878],
 		id: 399566,
@@ -136,7 +136,7 @@ export let peliculas = [
 		vote_count: 424
 	},
 	{
-		adult: false,
+		adult: true,
 		backdrop_path: '/yyWNPhP1HR4BTLErHcZwIUsMBvA.jpg',
 		genre_ids: [80, 18, 9648, 53],
 		id: 823855,
