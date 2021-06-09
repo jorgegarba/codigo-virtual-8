@@ -3,14 +3,38 @@ const contenedor = document.getElementById('contenedor');
 const spanNombrePelicula = document.getElementById('spanNombrePelicula');
 const staticBackdrop = document.getElementById('staticBackdrop');
 const modalPelicula = new bootstrap.Modal(staticBackdrop);
+const contenedorCarousel = document.getElementById('contenedorCarousel');
 
 const base_url_imagenes = 'https://image.tmdb.org/t/p/w500';
+
+const dibujarCarousel = () => {
+	peliculas.forEach((objPelicula) => {
+		let carouselCell = document.createElement('div');
+		carouselCell.classList.add('carousel-cell');
+
+		carouselCell.innerHTML = `
+									<div class="card" style="width: 18rem">
+										<img src="${base_url_imagenes}${objPelicula.backdrop_path}"
+													class="card-img-top"/>
+										<div class="card-body">
+											<h5 class="card-title">${objPelicula.title}</h5>
+											<p class="card-text">${objPelicula.overview.substr(0, 20)}</p>
+										</div>
+									</div>`;
+		contenedorCarousel.append(carouselCell);
+	});
+	
+	let flkty = new Flickity(contenedorCarousel, {
+		cellAlign: 'left',
+		contain: true
+	});
+};
+dibujarCarousel();
 
 const abrirModal = (objPelicula) => {
 	spanNombrePelicula.innerText = objPelicula.title;
 	modalPelicula.show();
 };
-
 const dibujarPeliculas = () => {
 	peliculas.forEach((objPelicula) => {
 		let col = document.createElement('div');
