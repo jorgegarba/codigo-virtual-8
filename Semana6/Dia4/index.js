@@ -8,11 +8,18 @@ const btnBuscar = document.querySelector("#btnBuscar");
 const btnActualizar = document.querySelector("#btnActualizar");
 const inputEliminar = document.querySelector("#inputEliminar");
 const btnEliminar = document.querySelector("#btnEliminar");
+// * Producto
+const selectCategoria = document.querySelector("#selectCategoria");
+const selectCategoria_2 = document.querySelector("#selectCategoria_2");
 
 //  ** GET /api/v1/categoria => Obtener todas las categorias con Async await
 const getCategorias = async () => {
-  const response = await axios.get(`${URL}/categoria`);
-  console.log(response.data);
+  try {
+    const response = await axios.get(`${URL}/categoria`);
+    return response.data;
+  } catch (error) {
+    console.log(error.toString());
+  }
 };
 
 // ** POST /api/v1/categoria => Crear un categoria usando el metodo post
@@ -23,8 +30,12 @@ const storeCategoria = async () => {
   };
   //** Nuestros POST recive 2 parametors 1 es la URL y el segundo es la data */
   //** const post(url, data) => { }
-  const response = await axios.post(`${URL}/categoria`, data);
-  console.log(response);
+  try {
+    const response = await axios.post(`${URL}/categoria`, data);
+    console.log(response);
+  } catch (e) {
+    console.log(e.toString());
+  }
 };
 
 btnCrearCategoria.onclick = () => storeCategoria();
@@ -72,4 +83,36 @@ const deleteCategoria = async (id) => {
   console.log(response);
 };
 
-getCategorias();
+const llenarCategorias = (categorias) => {
+  selectCategoria.innerHTML = `<option value='0' selected disabled>Seleccione una categoria</option>`;
+  selectCategoria_2.innerHTML = `<option value='0' selected disabled>Seleccione una categoria</option>`;
+  categorias.forEach((categoria) => {
+    //* <option></option>
+    const option = document.createElement("option");
+    //* <option>{nombre}</option>
+    option.innerText = categoria.nombre;
+    //* <option value={id}>{nombre}</option>
+    option.value = categoria.id;
+
+    selectCategoria.appendChild(option);
+  });
+
+  categorias.forEach((categoria) => {
+    //* <option></option>
+    const option = document.createElement("option");
+    //* <option>{nombre}</option>
+    option.innerText = categoria.nombre;
+    //* <option value={id}>{nombre}</option>
+    option.value = categoria.id;
+
+    selectCategoria_2.appendChild(option);
+  });
+};
+
+(async () => {
+  // Wait -> esperar
+  // Sin async await esto retorna una promesa
+  const categorias = await getCategorias();
+
+  llenarCategorias(categorias);
+})();
