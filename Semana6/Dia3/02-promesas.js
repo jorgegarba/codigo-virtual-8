@@ -5,19 +5,19 @@
  */
 
 const miPromesa = new Promise((resolve, reject) => {
-	/**
-	 * En el desarrollo de una promesa, podemos ejecutar
-	 * procesos asíncronos y cuando éstos terminen, retornar
-	 * los resultados
-	 */
-	setTimeout(() => {
-		let rpta = 50;
-		if (rpta === 100) {
-			resolve(rpta);
-		} else {
-			reject('Error, no es 100');
-		}
-	}, 2000);
+  /**
+   * En el desarrollo de una promesa, podemos ejecutar
+   * procesos asíncronos y cuando éstos terminen, retornar
+   * los resultados
+   */
+  setTimeout(() => {
+    let rpta = 50;
+    if (rpta === 100) {
+      resolve(rpta);
+    } else {
+      reject("Error, no es 100");
+    }
+  }, 2000);
 });
 
 /**
@@ -28,36 +28,36 @@ const miPromesa = new Promise((resolve, reject) => {
  */
 
 miPromesa
-	.then((rpta) => {
-		console.log(rpta);
-	})
-	.catch((rpta) => {
-		console.log(rpta);
-	});
+  .then((rpta) => {
+    console.log(rpta);
+  })
+  .catch((rpta) => {
+    console.log(rpta);
+  });
 
 /**
  * Creando una función que RETORNE UNA PROMESA
  */
 
 const getCoordenadas = (ciudad) => {
-	let miPromesa = new Promise((resolve, reject) => {
-		// algunos algoritmos para conectarnos a la base de datos
-		// para obtener las coordenadas de la ciudad buscada
-		setTimeout(() => {
-			if (ciudad === '') {
-				reject('No se recibió la ciudad');
-			} else {
-				resolve([-16.513, -70.63861]);
-			}
-		}, 2000);
-	});
-	return miPromesa;
+  let miPromesa = new Promise((resolve, reject) => {
+    // algunos algoritmos para conectarnos a la base de datos
+    // para obtener las coordenadas de la ciudad buscada
+    setTimeout(() => {
+      if (ciudad === "") {
+        reject("No se recibió la ciudad");
+      } else {
+        resolve([-16.513, -70.63861]);
+      }
+    }, 2000);
+  });
+  return miPromesa;
 };
 
-getCoordenadas('')
-	.then((rpta) => {
-		console.log(rpta);
-	})
-	.catch((rpta) => {
-		console.log(rpta);
-	});
+getCoordenadas("")
+  .then((rpta) => {
+    console.log(rpta);
+  })
+  .catch((rpta) => {
+    console.log(rpta);
+  });
