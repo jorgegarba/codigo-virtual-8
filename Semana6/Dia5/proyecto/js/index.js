@@ -1,10 +1,39 @@
-import { getCategorias, getVehiculos } from './servicios.js';
+import { getCategorias, getVehiculos, postVehiculo } from './servicios.js';
 import { create, gebid } from './utils.js';
+
+let categoriasGlobal = [];
 
 const selectCategorias = gebid('selectCategorias');
 const contenedorVehiculos = gebid('contenedorVehiculos');
 
+const formVehiculo = gebid('formVehiculo');
+const inputPlaca = gebid('inputPlaca');
+const selectColor = gebid('selectColor');
+const inputFoto = gebid('inputFoto');
+
+formVehiculo.onsubmit = (e) => {
+	e.preventDefault();
+
+	// armar el objVehiculo para mandarlo a los servicios de POST
+	let objVehiculo = {
+		color: selectColor.value,
+		placa: inputPlaca.value,
+		foto: inputFoto.value,
+		categoria_id: selectCategorias.value
+	};
+	postVehiculo(objVehiculo).then((rpta) => {
+		if (rpta) {
+			llamarGetVehiculos();
+		} else {
+			// TODO: Mostrar una ventana de error de creacións
+		}
+	});
+};
+
 const llenarVehiculos = (vehiculos) => {
+	
+	contenedorVehiculos.innerHTML = '';
+
 	vehiculos.forEach((objVehiculo) => {
 		const colMd4 = create('div');
 		colMd4.classList.add('col-md-4');
@@ -29,7 +58,14 @@ const llenarVehiculos = (vehiculos) => {
 
 		const pCategoria = create('p');
 		pCategoria.classList.add('card-text');
-		pCategoria.innerHTML = `<strong>Categoria: </strong> ${objVehiculo.categoria_id}`;
+
+		// Buscar en el arreglo global de categorías, aquella que cuyo ID coincida
+		// con el ID de la categoría actual del vehículo
+		let objCategoria = categoriasGlobal.find(
+			(objCategoria) => +objCategoria.id === +objVehiculo.categoria_id
+		);
+
+		pCategoria.innerHTML = `<strong>Categoria: </strong> ${objCategoria.nombre}`;
 
 		const btnAccion = create('button');
 		btnAccion.classList.add('btn', 'btn-primary');
@@ -43,7 +79,7 @@ const llenarVehiculos = (vehiculos) => {
 		cardBody.append(pCategoria);
 		cardBody.append(btnAccion);
 
-		contenedorVehiculos.appendChild(colMd4 	);
+		contenedorVehiculos.appendChild(colMd4);
 	});
 };
 
@@ -55,10 +91,14 @@ const llenarCategorias = (categorias) => {
 	selectCategorias.innerHTML = options;
 };
 
-getCategorias().then((categorias) => {
-	llenarCategorias(categorias);
-});
+const llamarGetVehiculos = () => {
+	getVehiculos().then((vehiculos) => {
+		llenarVehiculos(vehiculos);
+	});
+};
 
-getVehiculos().then((vehiculos) => {
-	llenarVehiculos(vehiculos);
+getCategorias().then((categorias) => {
+	categoriasGlobal = categorias;
+	llenarCategorias(categorias);
+	llamarGetVehiculos();
 });

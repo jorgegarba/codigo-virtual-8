@@ -90,10 +90,28 @@
 				<div class="col-md-4">
 					<div class="card">
 						<div class="card-body">
-							<form>
+							<form id="formVehiculo">
 								<div>
-									<label for="selectCategorias" class="form-label">
-										Categorias:
+									<label for="" class="form-label">Placa:</label>
+									<input
+										type="text"
+										placeholder="Ejm: abc-456"
+										id="inputPlaca"
+										class="form-control"
+									/>
+								</div>
+								<div>
+									<label for="" class="form-label">Color:</label>
+									<select name="" id="selectColor" class="form-select">
+										<option value="rojo">Rojo</option>
+										<option value="azul">Azul</option>
+										<option value="blanco">Blanco</option>
+										<option value="negro">Negro</option>
+									</select>
+								</div>
+								<div>
+									<label for="selectCategorias" class="form-label"
+										>Categorias:
 									</label>
 									<select
 										name=""
@@ -101,14 +119,27 @@
 										class="form-select"
 									></select>
 								</div>
+								<div>
+									<label for="" class="form-label">Link de la imagen:</label>
+									<textarea
+										name=""
+										id="inputFoto"
+										cols="30"
+										rows="5"
+										class="form-control"
+									></textarea>
+								</div>
+								<div>
+									<button type="submit" class="btn btn-primary">
+										Crear Vehiculo
+									</button>
+								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-8">
-					<div class="row" id="contenedorVehiculos">
-						
-					</div>
+					<div class="row" id="contenedorVehiculos"></div>
 				</div>
 			</div>
 		</main>

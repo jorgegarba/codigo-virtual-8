@@ -14,3 +14,19 @@ export const getVehiculos = async () => {
 	const rpta = await response.json();
 	return rpta;
 };
+
+export const postVehiculo = async (objVehiculo) => {
+	const response = await fetch(`${BASE_URL}/vehiculos`, {
+		method: 'POST',
+		body: JSON.stringify(objVehiculo),
+		headers: {
+			'Content-type': 'application/json'
+		}
+	});
+	const rpta = await response.json();
+	if (rpta.id) {
+		return true;
+	} else {
+		return false;
+	}
+};
