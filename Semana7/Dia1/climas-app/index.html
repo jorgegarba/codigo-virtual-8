@@ -86,13 +86,47 @@
 		<main class="container-fluid">
 			<div class="row mt-5">
 				<div class="col-12 px-5">
-					<form>
+					<form id="formBusqueda">
 						<input
+							id="inputBusqueda"
 							type="text"
 							placeholder="Buscar ciudad..."
 							class="form-control input-busqueda shadow"
 						/>
 					</form>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col-md-4">
+					<div class="cards__container" id="cards__container">
+						<!-- <div class="card">
+							<div class="card-body d-flex">
+								<figure>
+									<img src="http://placehold.it/150X150" alt="" />
+								</figure>
+								<div class="card__info text-center w-100">
+									<h3 class="display-4">15 °C</h3>
+									<p class="card-text text-muted">
+										14-Junio-2021 - 21:00:00
+									</p>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-12">
+							<!-- chart -->
+							GRAFICO
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- mapa -->
+							MAPA
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -102,5 +136,6 @@
 			integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 			crossorigin="anonymous"
 		></script>
+		<script src="./js/index.js" type="module"></script>
 	</body>
 </html>
