@@ -5,6 +5,7 @@ let categoriasGlobal = [];
 
 const selectCategorias = gebid('selectCategorias');
 const contenedorVehiculos = gebid('contenedorVehiculos');
+const loading = gebid('loading');
 
 const formVehiculo = gebid('formVehiculo');
 const inputPlaca = gebid('inputPlaca');
@@ -21,7 +22,9 @@ formVehiculo.onsubmit = (e) => {
 		foto: inputFoto.value,
 		categoria_id: selectCategorias.value
 	};
+	activarLoading('Registrando vehículo...');
 	postVehiculo(objVehiculo).then((rpta) => {
+		desactivarLoading();
 		if (rpta) {
 			llamarGetVehiculos();
 		} else {
@@ -30,8 +33,14 @@ formVehiculo.onsubmit = (e) => {
 	});
 };
 
+const activarLoading = (mensaje) => {
+	loading.style.display = 'flex';
+	loading.innerText = mensaje;
+};
+
+const desactivarLoading = () => (loading.style.display = 'none');
+
 const llenarVehiculos = (vehiculos) => {
-	
 	contenedorVehiculos.innerHTML = '';
 
 	vehiculos.forEach((objVehiculo) => {
@@ -92,13 +101,18 @@ const llenarCategorias = (categorias) => {
 };
 
 const llamarGetVehiculos = () => {
+	activarLoading('Cargando vehículos...');
 	getVehiculos().then((vehiculos) => {
+		desactivarLoading();
 		llenarVehiculos(vehiculos);
 	});
 };
 
+activarLoading('Cargando categorias...');
+
 getCategorias().then((categorias) => {
 	categoriasGlobal = categorias;
 	llenarCategorias(categorias);
+	desactivarLoading();
 	llamarGetVehiculos();
 });
