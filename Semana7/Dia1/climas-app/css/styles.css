@@ -7,5 +7,18 @@
 	background-image: url('./../assets/search.svg');
 	background-repeat: no-repeat;
 	background-position: calc(100% - 50px) center;
-  background-size: 40px 40px;
+	background-size: 40px 40px;
+}
+
+.icono-clima {
+	max-width: 120px;
+}
+
+#mapid {
+	height: 180px;
+}
+
+.cards__container {
+	max-height: 500px;
+	overflow-y: scroll;
 }
