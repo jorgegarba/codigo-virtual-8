@@ -4,6 +4,8 @@ const saludar = () => {
 
 saludar();
 
-fetch('alksdlkasmld').then((s) => {
-	console.log(s);
-});
+// fetch('alksdlkasmld').then((s) => {
+// 	console.log(s);
+// });
+
+console.log(__dirname);
