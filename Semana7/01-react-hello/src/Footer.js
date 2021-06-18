@@ -1,11 +1,16 @@
 import React from 'react';
 
 const Footer = () => {
+	let anio = new Date().getFullYear();
+
 	return (
-		<footer>
-			<p>Año del bicentenario</p>
-			<small>CodiGo - 2021 - Todos los derecho reservados</small>
-		</footer>
+		<>
+			<hr />
+			<footer>
+				<p>Año del bicentenario</p>
+				<small>CodiGo - {anio} - Todos los derecho reservados</small>
+			</footer>
+		</>
 	);
 };
 export default Footer;
