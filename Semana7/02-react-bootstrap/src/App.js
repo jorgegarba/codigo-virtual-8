@@ -5,7 +5,6 @@ import { noticias } from './data/noticias';
 
 const App = () => {
 	console.log(noticias);
-
 	return (
 		<>
 			<Header />
