@@ -6,12 +6,39 @@ import { products } from './data/products';
 
 const App = () => {
 	const [canasta, setCanasta] = useState([]);
+	const agregarAlCarrito = (objProducto)=>{
+		// algoritymo para agreegar un nuevo produycto a la canasta
+		let copiaCanasta = [...canasta];
+		// buscar el producto que intentamos agregar para ver si existe en la canasta
+		// o agregamos un nuevo producto
+		let productoEncontrado = copiaCanasta.find((producto)=>{
+			if(producto.id === objProducto.id){
+				return producto;
+			}
+		});
 
+		if(productoEncontrado){
+			// el producto ya existía en la canasta
+			console.log("el propducto ya existía");
+			productoEncontrado.cantidad++;
+			setCanasta(copiaCanasta);
+
+		}else{
+			// el producto va a ser agregado por primera vez
+			console.log("el producto va aser agredo por primera vez");
+			copiaCanasta.push({
+				...objProducto,
+				cantidad: 1
+			});
+			setCanasta(copiaCanasta);
+		}
+		
+
+	}
 	return (
 		<>
 			<main className="container">
 				<Carrito canasta={canasta} />
-
 				<div className="row">
 					<div className="col-12">
 						<h1 className="display-5">Tienda app</h1>
@@ -20,7 +47,9 @@ const App = () => {
 				{/* Contenedore de los productos */}
 				<div className="row">
 					{products.map((objProducto, i) => {
-						return <Producto prod={objProducto} key={i} />;
+						return <Producto 
+						agregarAlCarrito={agregarAlCarrito}
+						 prod={objProducto} key={i} />;
 					})}
 				</div>
 			</main>
