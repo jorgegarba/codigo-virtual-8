@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Carrito from './components/Carrito';
 import Producto from './components/Producto';
 
 import { products } from './data/products';
 
 const App = () => {
+	
 	const [canasta, setCanasta] = useState([]);
+
+	
+	useEffect(()=>{
+
+		let canastals = localStorage.getItem("canastals");
+		if(canastals){
+			canastals = JSON.parse(canastals);
+			setCanasta(canastals);
+		}
+		console.log(canastals);
+
+	} , [])
+
+
+
 	const agregarAlCarrito = (objProducto)=>{
 		// algoritymo para agreegar un nuevo produycto a la canasta
 		let copiaCanasta = [...canasta];
@@ -21,8 +37,6 @@ const App = () => {
 			// el producto ya existía en la canasta
 			console.log("el propducto ya existía");
 			productoEncontrado.cantidad++;
-			setCanasta(copiaCanasta);
-
 		}else{
 			// el producto va a ser agregado por primera vez
 			console.log("el producto va aser agredo por primera vez");
@@ -30,8 +44,10 @@ const App = () => {
 				...objProducto,
 				cantidad: 1
 			});
-			setCanasta(copiaCanasta);
 		}
+
+		localStorage.setItem("canastals", JSON.stringify(copiaCanasta))
+		setCanasta(copiaCanasta);
 		
 
 	}
