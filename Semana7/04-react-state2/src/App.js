@@ -5,52 +5,45 @@ import Producto from './components/Producto';
 import { products } from './data/products';
 
 const App = () => {
-	
 	const [canasta, setCanasta] = useState([]);
 
-	
-	useEffect(()=>{
-
-		let canastals = localStorage.getItem("canastals");
-		if(canastals){
+	useEffect(() => {
+		let canastals = localStorage.getItem('canastals');
+		if (canastals) {
 			canastals = JSON.parse(canastals);
 			setCanasta(canastals);
 		}
 		console.log(canastals);
+	}, []);
 
-	} , [])
-
-
-
-	const agregarAlCarrito = (objProducto)=>{
+	const agregarAlCarrito = (objProducto) => {
 		// algoritymo para agreegar un nuevo produycto a la canasta
 		let copiaCanasta = [...canasta];
 		// buscar el producto que intentamos agregar para ver si existe en la canasta
 		// o agregamos un nuevo producto
-		let productoEncontrado = copiaCanasta.find((producto)=>{
-			if(producto.id === objProducto.id){
+		let productoEncontrado = copiaCanasta.find((producto) => {
+			if (producto.id === objProducto.id) {
 				return producto;
 			}
 		});
 
-		if(productoEncontrado){
+		if (productoEncontrado) {
 			// el producto ya existía en la canasta
-			console.log("el propducto ya existía");
+			console.log('el propducto ya existía');
 			productoEncontrado.cantidad++;
-		}else{
+		} else {
 			// el producto va a ser agregado por primera vez
-			console.log("el producto va aser agredo por primera vez");
+			console.log('el producto va aser agredo por primera vez');
 			copiaCanasta.push({
 				...objProducto,
 				cantidad: 1
 			});
 		}
 
-		localStorage.setItem("canastals", JSON.stringify(copiaCanasta))
+		localStorage.setItem('canastals', JSON.stringify(copiaCanasta));
 		setCanasta(copiaCanasta);
-		
+	};
 
-	}
 	return (
 		<>
 			<main className="container">
@@ -63,9 +56,13 @@ const App = () => {
 				{/* Contenedore de los productos */}
 				<div className="row">
 					{products.map((objProducto, i) => {
-						return <Producto 
-						agregarAlCarrito={agregarAlCarrito}
-						 prod={objProducto} key={i} />;
+						return (
+							<Producto
+								agregarAlCarrito={agregarAlCarrito}
+								prod={objProducto}
+								key={i}
+							/>
+						);
 					})}
 				</div>
 			</main>
