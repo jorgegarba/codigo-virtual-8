@@ -9,6 +9,7 @@ const App = () => {
 	const [categorias, setCategorias] = useState([]);
 	const [productos, setProductos] = useState([]);
 	const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+	const [pagina, setPagina] = useState(1);
 
 	const seleccionarCategoria = (id) => {
 		setCategoriaSeleccionada(id);
@@ -16,7 +17,7 @@ const App = () => {
 
 	useEffect(() => {
 		getCategorias().then((rpta) => {
-			getProductos().then((rpta2) => {
+			getProductos(pagina).then((rpta2) => {
 				setCategorias(rpta.data);
 				setProductos(rpta2.data);
 			});
@@ -39,6 +40,7 @@ const App = () => {
 						<Categorias
 							categorias={categorias}
 							seleccionarCategoria={seleccionarCategoria}
+							categoriaSeleccionada={categoriaSeleccionada}
 						/>
 					</div>
 					<div className="col-md-9">
