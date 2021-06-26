@@ -1,5 +1,7 @@
 import React from 'react';
-import FormsOnChange2 from './pages/FormsOnChange2';
+import FormsOnChange3 from './pages/FormsOnChange3';
+
+// import FormsOnChange2 from './pages/FormsOnChange2';
 // import FormsOnChange from './pages/FormsOnChange';
 // import FormsUseRef from './pages/FormsUseRef';
 
@@ -8,7 +10,8 @@ const App = () => {
 		<div>
 			{/* <FormsUseRef /> */}
 			{/* <FormsOnChange /> */}
-			<FormsOnChange2 />
+			{/* <FormsOnChange2 /> */}
+			<FormsOnChange3 />
 		</div>
 	);
 };
