@@ -13,12 +13,22 @@
  * @param {*} action Es el objeto que nos envía el DISPATCH
  * @returns el reducer retorna el nuevo estado global
  */
-export const balanceReducer = (state = { balance: 0, message: '' }, action) => {
+export const balanceReducer = (state = { balance: 0, mensaje: '' }, action) => {
 	switch (action.type) {
 		case 'AGREGAR_DINERO':
 			return {
 				balance: state.balance + action.payload.monto,
-				mensaje: state.payload.mensaje
+				mensaje: action.payload.mensaje
+			};
+		case 'RESTAR_DINERO':
+			return {
+				balance: state.balance - action.payload.monto,
+				mensaje: action.payload.mensaje
+			};
+		case 'MODIFICAR_MENSAJE':
+			return {
+				balance: state.balance,
+				mensaje: action.payload.mensaje
 			};
 		// en el caso de que ninguna actión coincida con un action
 		// específico, se retornará el estado igual al anterior
