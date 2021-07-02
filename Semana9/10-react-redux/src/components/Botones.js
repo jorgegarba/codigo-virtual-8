@@ -1,27 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { restarBalance, sumarBalance } from '../actions/balanceAction';
+import { AGREGAR_DINERO, RESTAR_DINERO } from '../types/types';
 
 const Botones = () => {
 	const dispatch = useDispatch();
 
 	const agregar10lucas = () => {
-		dispatch({
-			type: 'AGREGAR_DINERO',
-			payload: {
-				monto: 10,
-				mensaje: 'Agregando 10 luquitas'
-			}
-		});
+		dispatch(sumarBalance(10));
 	};
 
 	const restar10lucas = () => {
-		dispatch({
-			type: 'RESTAR_DINERO',
-			payload: {
-				monto: 10,
-				mensaje: 'Restando 10 lucrecias'
-			}
-		});
+		dispatch(restarBalance(10));
 	};
 
 	return (
