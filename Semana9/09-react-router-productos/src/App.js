@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header';
 import Carrito from './pages/Carrito';
 import Productos from './pages/Productos';
-import { store } from './redux/store/store';
 import NavBar from './components/NavBar';
+import { cargarCategorias } from './redux/actions/categoriaActions';
 
 const App = () => {
-	return (
-		<Provider store={store}>
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(cargarCategorias());
+	}, []);
+
+	// VERIFICAR SI LAS CATEOGIRAS HAN TERMINADO DE CARGAR
+	const categoriaState = useSelector((state) => state.categoria);
+	console.log(categoriaState);
+	if (categoriaState.cargando) {
+		return <h1 className="display-4">Cargando categorias...</h1>;
+	} else {
+		return (
 			<Router>
 				<div className="d-flex">
 					<Header />
@@ -22,8 +33,8 @@ const App = () => {
 					</main>
 				</div>
 			</Router>
-		</Provider>
-	);
+		);
+	}
 };
 
 export default App;
