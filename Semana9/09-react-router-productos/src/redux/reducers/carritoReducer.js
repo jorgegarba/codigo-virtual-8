@@ -1,4 +1,4 @@
-import { AGREGAR_PRODUCTO } from '../types/types';
+import { AGREGAR_PRODUCTO, ELIMINAR_PRODUCTO } from '../types/types';
 
 const initialState = {
 	productos: [],
@@ -37,7 +37,22 @@ export const carritoReducer = (state = initialState, action) => {
 				// con la función reduce para obtener el total
 				total: montoTotal
 			};
+		case ELIMINAR_PRODUCTO:
+			let copiaProductos2 = [...state.productos];
 
+			copiaProductos2 = copiaProductos2.filter(
+				(objProducto) => objProducto.id !== action.payload.objProducto.id
+			);
+
+			let montoTotal2 = copiaProductos2.reduce((sumatoria, objProducto) => {
+				return objProducto.precio * objProducto.cantidad + sumatoria;
+			}, 0);
+
+			return {
+				...state,
+				productos: copiaProductos2,
+				total: montoTotal2
+			};
 		default:
 			return state;
 	}
