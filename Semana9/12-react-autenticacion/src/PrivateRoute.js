@@ -1,13 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 const PrivateRoute = (props) => {
-	const autenticado = true;
+	const { cargando, autenticado } = useSelector((state) => state.auth);
 
-	if (autenticado) {
-		return <Route path={props.path} component={props.component} />;
+	if (cargando) {
+		return <div>CARGANDO...</div>;
 	} else {
-		return <Redirect to={'/'} />;
+		if (autenticado) {
+			return <Route path={props.path} component={props.component} />;
+		} else {
+			return <Redirect to={'/'} />;
+		}
 	}
 };
 

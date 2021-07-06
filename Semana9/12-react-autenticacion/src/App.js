@@ -11,24 +11,24 @@ import CarritoRouter from './modulos/carrito/CarritoRouter';
 import CatalogoRouter from './modulos/catalogo/CatalogoRouter';
 import HomeRouter from './modulos/home/HomeRouter';
 import PrivateRoute from './PrivateRoute';
-import { Provider } from 'react-redux';
-import { store } from './redux/store/store';
 
+import { loginLocalStorage } from './redux/actions/authActions';
+import { useDispatch } from 'react-redux';
 const App = () => {
+	const dispatch = useDispatch();
+	dispatch(loginLocalStorage());
 	return (
-		<Provider store={store}>
-			<Router>
-				<Switch>
-					<Route path="/catalogo" component={CatalogoRouter} />
-					<Route path="/carrito" component={CarritoRouter} />
-					<Route path="/auth" component={AuthRouter} />
-					<PrivateRoute path="/admin" component={AdminRouter} />
-					{/* <Route path="/admin" component={AdminRouter} /> */}
-					<Route exact path="/" component={HomeRouter} />
-					<Redirect to="/" />
-				</Switch>
-			</Router>
-		</Provider>
+		<Router>
+			<Switch>
+				<Route path="/catalogo" component={CatalogoRouter} />
+				<Route path="/carrito" component={CarritoRouter} />
+				<Route path="/auth" component={AuthRouter} />
+				<PrivateRoute path="/admin" component={AdminRouter} />
+				{/* <Route path="/admin" component={AdminRouter} /> */}
+				<Route exact path="/" component={HomeRouter} />
+				<Redirect to="/" />
+			</Switch>
+		</Router>
 	);
 };
 
