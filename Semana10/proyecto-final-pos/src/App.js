@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PosRouter from './modulos/pos/PosRouter';
 
 const App = () => {
-  return (
-    <div>
-      Hello world
-    </div>
-  )
-}
+	return (
+		<>
+			<Router>
+				<Switch>
+					<Route path="/pos" component={PosRouter} />
+				</Switch>
+			</Router>
+		</>
+	);
+};
 
-export default App
+export default App;
