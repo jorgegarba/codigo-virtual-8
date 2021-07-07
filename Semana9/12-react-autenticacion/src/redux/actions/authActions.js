@@ -47,38 +47,42 @@ export const login = (correo, password) => {
 
 export const loginLocalStorage = () => {
 	return async (dispatch) => {
-		let token = localStorage.getItem('token');
-		if (token) {
-			const endpoint = `${URL_BACKEND}/verificar`;
-			const response = await axios.post(endpoint, null, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			});
-			if (response.status === 200) {
-				const payloadToken = token.split('.')[1];
-				// atob() sirve para decodificar strings basados en el algoritmo base64
-				// btoa() sirver para codificar un string en base64
-				const payloadTokenDecoed = atob(payloadToken);
-				const payloadJSON = JSON.parse(payloadTokenDecoed);
-				dispatch({
-					type: SET_SUCCESS_LOGIN,
-					payload: {
-						usuId: payloadJSON.usu_id,
-						usuNom: payloadJSON.usu_nom,
-						usuTipo: payloadJSON.usu_tipo,
-						token: token,
-						autenticado: true
+		try {
+			let token = localStorage.getItem('token');
+			if (token) {
+				const endpoint = `${URL_BACKEND}/verificar`;
+				const response = await axios.post(endpoint, null, {
+					headers: {
+						Authorization: `Bearer ${token}`
 					}
 				});
-				dispatch({ type: FINISH_LOADING_LOGIN });
+				if (response.status === 200) {
+					const payloadToken = token.split('.')[1];
+					// atob() sirve para decodificar strings basados en el algoritmo base64
+					// btoa() sirver para codificar un string en base64
+					const payloadTokenDecoed = atob(payloadToken);
+					const payloadJSON = JSON.parse(payloadTokenDecoed);
+					dispatch({
+						type: SET_SUCCESS_LOGIN,
+						payload: {
+							usuId: payloadJSON.usu_id,
+							usuNom: payloadJSON.usu_nom,
+							usuTipo: payloadJSON.usu_tipo,
+							token: token,
+							autenticado: true
+						}
+					});
+					dispatch({ type: FINISH_LOADING_LOGIN });
+				} else {
+					// TO DO: Renovar el token si era un token caducado
+					// TO DO: Eliminar el token en caso de que era
+					// un token inválido
+					dispatch({ type: FINISH_LOADING_LOGIN });
+				}
 			} else {
-				// TO DO: Renovar el token si era un token caducado
-				// TO DO: Eliminar el token en caso de que era
-				// un token inválido
 				dispatch({ type: FINISH_LOADING_LOGIN });
 			}
-		} else {
+		} catch (error) {
 			dispatch({ type: FINISH_LOADING_LOGIN });
 		}
 	};
