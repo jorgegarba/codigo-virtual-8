@@ -4,6 +4,7 @@ import { seleccionarMesaAction } from '../../../redux/actions/mesaAction';
 
 const PosMesa = ({ objMesa }) => {
 	const dispatch = useDispatch();
+
 	const { idMesaSeleccionada } = useSelector((state) => state.mesa);
 
 	let claseActivo = +idMesaSeleccionada === +objMesa.mesa_id ? 'activo' : '';
