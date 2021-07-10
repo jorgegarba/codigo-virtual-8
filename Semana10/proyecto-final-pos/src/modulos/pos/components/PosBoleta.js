@@ -5,15 +5,10 @@ import { useSelector } from 'react-redux';
 const PosBoleta = () => {
 	const { pedidos } = useSelector((state) => state.pedido);
 	const { idMesaSeleccionada } = useSelector((state) => state.mesa);
-
-	//
-	// let objPedidoActual = null;
-	// if (idMesaSeleccionada !== -1) {
-	// 	objPedidoActual = pedidos.find(
-	// 		(objPedido) => objPedido.mesaId === idMesaSeleccionada
-	// 	);
-	// }
-	//
+	
+	let objPedidoActual = pedidos.find(
+		(objPedido) => objPedido.mesaId === idMesaSeleccionada
+	);
 
 	return (
 		<div className="boleta">
@@ -27,11 +22,13 @@ const PosBoleta = () => {
 				<hr />
 
 				<ul className="comanda__lista">
-					<PosBoletaItem />
-					<PosBoletaItem />
-					<PosBoletaItem />
-					<PosBoletaItem />
-					<PosBoletaItem />
+					{objPedidoActual
+						? objPedidoActual.platos.map((objPlatoPedido, i) => {
+								return (
+									<PosBoletaItem objPlatoPedido={objPlatoPedido} key={i} />
+								);
+						  })
+						: null}
 				</ul>
 				<button className="boton boton-success boton-block">PAGAR</button>
 			</div>
