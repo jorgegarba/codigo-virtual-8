@@ -5,8 +5,10 @@ import PosModalBoleta from './PosModalBoleta';
 
 const PosBoleta = () => {
 	const { pedidos } = useSelector((state) => state.pedido);
-	const { idMesaSeleccionada } = useSelector((state) => state.mesa);
+	const { idMesaSeleccionada, mesas } = useSelector((state) => state.mesa);
 	const [mostrar, setMostrar] = useState(false);
+
+	let objMesa = mesas.find((objMesa) => objMesa.mesa_id === idMesaSeleccionada);
 
 	let objPedidoActual = pedidos.find(
 		(objPedido) => objPedido.mesaId === idMesaSeleccionada
@@ -15,11 +17,16 @@ const PosBoleta = () => {
 	return (
 		<div className="boleta">
 			<h3>
-				Pedido Mesa: &nbsp;<span className="color-secundario">01</span>
+				Pedido Mesa: &nbsp;
+				<span className="color-secundario">
+					{objMesa ? objMesa.mesa_nro : 'seleccione'}
+				</span>
 			</h3>
 			<hr />
 			<div className="comanda">
-				<h4 className="comanda__mesa">Mesa 01</h4>
+				<h4 className="comanda__mesa">
+					{objMesa ? `Mesa ${objMesa.mesa_nro}` : 'seleccione'}
+				</h4>
 				<p className="comanda__usuario">Carlos Jimenez</p>
 				<hr />
 
@@ -32,14 +39,16 @@ const PosBoleta = () => {
 						  })
 						: null}
 				</ul>
-				<button
-					className="boton boton-success boton-block"
-					onClick={() => {
-						setMostrar(true);
-					}}
-				>
-					PAGAR
-				</button>
+				{idMesaSeleccionada !== -1 ? (
+					<button
+						className="boton boton-success boton-block"
+						onClick={() => {
+							setMostrar(true);
+						}}
+					>
+						PAGAR
+					</button>
+				) : null}
 			</div>
 			<PosModalBoleta mostrar={mostrar} setMostrar={setMostrar} />
 		</div>
