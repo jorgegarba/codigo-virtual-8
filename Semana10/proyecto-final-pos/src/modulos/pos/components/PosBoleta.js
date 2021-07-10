@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PosBoletaItem } from './PosBoletaItem';
 import { useSelector } from 'react-redux';
+import PosModalBoleta from './PosModalBoleta';
 
 const PosBoleta = () => {
 	const { pedidos } = useSelector((state) => state.pedido);
 	const { idMesaSeleccionada } = useSelector((state) => state.mesa);
-	
+	const [mostrar, setMostrar] = useState(false);
+
 	let objPedidoActual = pedidos.find(
 		(objPedido) => objPedido.mesaId === idMesaSeleccionada
 	);
@@ -30,8 +32,16 @@ const PosBoleta = () => {
 						  })
 						: null}
 				</ul>
-				<button className="boton boton-success boton-block">PAGAR</button>
+				<button
+					className="boton boton-success boton-block"
+					onClick={() => {
+						setMostrar(true);
+					}}
+				>
+					PAGAR
+				</button>
 			</div>
+			<PosModalBoleta mostrar={mostrar} setMostrar={setMostrar} />
 		</div>
 	);
 };
