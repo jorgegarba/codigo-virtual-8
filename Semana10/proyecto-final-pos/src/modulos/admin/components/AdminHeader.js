@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-	Button,
-	Form,
-	FormControl,
-	Nav,
-	Navbar,
-	NavDropdown
-} from 'react-bootstrap';
+import { Button, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 
-const AdminHeader = () => {
+const AdminHeader = (props) => {
+	const goToPOS = () => {
+		props.history.push('/pos/pos');
+	};
 	return (
 		<header>
 			<Navbar bg="dark" variant="dark" expand="lg">
@@ -31,8 +28,9 @@ const AdminHeader = () => {
 						</NavDropdown>
 					</Nav>
 					<Form inline>
-						<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-						<Button variant="outline-success">Search</Button>
+						<Button variant="outline-success" type="button" onClick={goToPOS}>
+							Ir a POS
+						</Button>
 					</Form>
 				</Navbar.Collapse>
 			</Navbar>
@@ -40,4 +38,4 @@ const AdminHeader = () => {
 	);
 };
 
-export default AdminHeader;
+export default withRouter(AdminHeader);

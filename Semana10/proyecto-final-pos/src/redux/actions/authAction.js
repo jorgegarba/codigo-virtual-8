@@ -54,7 +54,6 @@ export const iniciarSesionAction = (correo, password) => {
 export const iniciarSesionLocalStorage = () => {
 	return async (dispatch) => {
 		dispatch(inicioCargandoLogin());
-
 		let token = localStorage.getItem('token');
 		try {
 			if (token) {
@@ -80,9 +79,12 @@ export const iniciarSesionLocalStorage = () => {
 					});
 					dispatch(finCargandoLogin());
 				}
+			} else {
+				dispatch(finCargandoLogin());
 			}
 		} catch (error) {
 			console.log('errosh');
+			localStorage.removeItem('token');
 			dispatch(finCargandoLogin());
 		}
 	};

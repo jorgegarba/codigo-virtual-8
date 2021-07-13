@@ -1,8 +1,56 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Bar } from 'react-chartjs-2';
+import { format } from 'date-fns';
+
+const options = {
+	scales: {
+		yAxes: [
+			{
+				ticks: {
+					beginAtZero: true
+				}
+			}
+		]
+	}
+};
 
 const AdminDashboard = () => {
 	const { platos, cargandoPlatos } = useSelector((state) => state.plato);
+	const { pedidosDB } = useSelector((state) => state.pedido);
+
+	let labels = [];
+	let precios = [];
+
+	if (platos.length > 0 && pedidosDB.length > 0) {
+		labels = pedidosDB.map((objPedidoDB) => {
+			let date = new Date(objPedidoDB.pedido_fech);
+			return format(date, 'MM/dd hh:mm');
+		});
+		precios = pedidosDB.map((objPedidoDB) => {
+			let total = 0;
+			objPedidoDB.PedidoPlatos.forEach((objPedidoPlato) => {
+				let objPlato = platos.find(
+					(plato) => plato.plato_id === objPedidoPlato.plato_id
+				);
+				total += +objPlato.plato_pre * +objPedidoPlato.pedidoplato_cant;
+			});
+			return total;
+		});
+	}
+
+	const data = {
+		labels: labels,
+		datasets: [
+			{
+				label: 'Monto de venta',
+				data: precios,
+				backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+				borderColor: ['rgba(255, 99, 132, 1)'],
+				borderWidth: 1
+			}
+		]
+	};
 
 	return (
 		<main className="container">
@@ -11,7 +59,9 @@ const AdminDashboard = () => {
 			</h1>
 			<hr />
 			<div className="row">
-				<div className="col-12">AQUÍ IRÁ EL GRAFICO</div>
+				<div className="col-12">
+					<Bar data={data} options={options} />
+				</div>
 			</div>
 			<div className="row">
 				<div className="col-md-4">
