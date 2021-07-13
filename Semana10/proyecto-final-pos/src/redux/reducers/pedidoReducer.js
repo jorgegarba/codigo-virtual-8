@@ -1,6 +1,15 @@
-import { AGREGAR_PLATO_A_PEDIDO, ELIMINAR_PEDIDO } from '../types/types';
+import {
+	AGREGAR_PLATO_A_PEDIDO,
+	ELIMINAR_PEDIDO,
+	FIN_CARGANDO_PEDIDOS_DB,
+	INICIO_CARGANDO_PEDIDOS_DB,
+	SET_PEDIDOS_DB
+} from '../types/types';
 
 const initialState = {
+	pedidosDB: [],
+	cargandoPedidosDB: false,
+
 	pedidos: []
 	// pedidos: [
 	// 	{
@@ -22,6 +31,22 @@ const initialState = {
 
 export const pedidoReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case INICIO_CARGANDO_PEDIDOS_DB:
+			return {
+				...state,
+				cargandoPedidosDB: true
+			};
+		case FIN_CARGANDO_PEDIDOS_DB:
+			return {
+				...state,
+				cargandoPedidosDB: false
+			};
+		case SET_PEDIDOS_DB:
+			return {
+				...state,
+				pedidosDB: action.payload
+			};
+
 		case AGREGAR_PLATO_A_PEDIDO:
 			let pedidosState = [...state.pedidos];
 			//Buscando la posición del objeto pedido que tenga la mesaId a la cual queremos

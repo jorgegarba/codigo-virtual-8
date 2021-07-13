@@ -32,6 +32,7 @@ export const iniciarSesionAction = (correo, password) => {
 		);
 		if (response.status === 200) {
 			let { token } = response.data;
+			localStorage.setItem('token', token);
 			let payload = token.split('.')[1];
 			let payloadDecoded = atob(payload);
 			let payloadJSON = JSON.parse(payloadDecoded);
@@ -47,5 +48,42 @@ export const iniciarSesionAction = (correo, password) => {
 			});
 		}
 		dispatch(finCargandoLogin());
+	};
+};
+
+export const iniciarSesionLocalStorage = () => {
+	return async (dispatch) => {
+		dispatch(inicioCargandoLogin());
+
+		let token = localStorage.getItem('token');
+		try {
+			if (token) {
+				const endpoint = `${URL_BACKEND}/verificar`;
+				const response = await axios.post(endpoint, null, {
+					headers: {
+						authorization: `Bearer ${token}`
+					}
+				});
+				if (response.data.ok) {
+					let payload = token.split('.')[1];
+					let payloadDecoded = atob(payload);
+					let payloadJSON = JSON.parse(payloadDecoded);
+					dispatch({
+						type: SET_SUCCESS_LOGIN,
+						payload: {
+							autenticado: true,
+							usu_nom: payloadJSON.usu_nom,
+							usu_id: payloadJSON.usu_id,
+							usu_tipo: payloadJSON.usu_tipo,
+							token: token
+						}
+					});
+					dispatch(finCargandoLogin());
+				}
+			}
+		} catch (error) {
+			console.log('errosh');
+			dispatch(finCargandoLogin());
+		}
 	};
 };
